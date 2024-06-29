@@ -5,7 +5,7 @@ on:
     branches:
       - dev
 
-jobs:git add
+jobs:
   build:
     runs-on: ubuntu-latest
 
