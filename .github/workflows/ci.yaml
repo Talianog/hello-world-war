@@ -9,6 +9,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      SONAR_PROJECT_KEY: Talianog_hello-world-war
+      SONAR_ORGANIZATION: talianog
+      SONAR_HOST_URL: https://sonarcloud.io
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -23,9 +29,7 @@ jobs:
         run: mvn -B package --file pom.xml
 
       - name: Run SonarQube analysis
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn sonar:sonar -Dsonar.projectKey=Talianog_hello-world-war -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        run: mvn sonar:sonar -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }} -Dsonar.organization=${{ env.SONAR_ORGANIZATION }} -Dsonar.host.url=${{ env.SONAR_HOST_URL }} -Dsonar.login=${{ env.SONAR_TOKEN }}
 
       - name: Build Docker image
         run: docker build -t hello-world-war:${{ github.run_id }} .
