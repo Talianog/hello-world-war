@@ -11,7 +11,7 @@ jobs:
 
     env:
       SONAR_PROJECT_KEY: Talianog_hello-world-war
-      SONAR_ORGANIZATION: talianog
+      SONAR_ORGANIZATION: taliano
       SONAR_HOST_URL: https://sonarcloud.io
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
@@ -36,7 +36,7 @@ jobs:
 
       - name: Tag Docker image
         run: docker tag hello-world-war:${{ github.run_id }} Talianog/hello-world-war:${{ github.run_id }}
-        
+
       - name: Log in to DockerHub
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
