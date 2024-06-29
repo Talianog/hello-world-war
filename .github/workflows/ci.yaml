@@ -38,7 +38,7 @@ jobs:
         run: docker tag hello-world-war:${{ github.run_id }} YOUR_DOCKERHUB_USERNAME/hello-world-war:${{ github.run_id }}
 
       - name: Push Docker image
-        run: docker push YOUR_DOCKERHUB_USERNAME/hello-world-war:${{ github.run_id }}
+        run: docker push talianog/hello-world-war:${{ github.run_id }}
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
