@@ -11,7 +11,7 @@ jobs:
 
     env:
       SONAR_PROJECT_KEY: Talianog_hello-world-war
-      SONAR_ORGANIZATION: taliano
+      SONAR_ORGANIZATION: talianog
       SONAR_HOST_URL: https://sonarcloud.io
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
